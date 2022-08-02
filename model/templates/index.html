@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>University Admission</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+       <h1>Know your chances</h1>
+       <form action="{{ url_for('result')}}" onsubmit="return validate()" name="form" method="post" >
+        <label for="CGPA">Enter your CGPA: </label>
+    	<input type="text" name="CGPA" placeholder="CGPA" required="required" />
+        
+        <label for="GRE Score">Enter your GRE Score: </label>
+        <input type="text" name="GRE Score" placeholder="GRE Score" required="required" />
+
+        <label for="TOEFL Score">Enter your TOEFL Score: </label>
+		<input type="text" name="TOEFL Score" placeholder="TOEFL Score" required="required" />
+
+        <label for="Research">Have you done any Research: </label>
+        <label for="Research">Yes: </label>
+        <input type="radio" name="Research" value="1"/>
+        <label for="Research">No: </label>
+        <input type="radio" name="Research" value="0"/>
+
+        <label for="University Rating">Enter University Rating: </label>
+        <input type="text" name="University Rating" placeholder="University Rating" required="required" />
+
+        <label for="SOP">Enter your SOP: </label>
+        <input type="text" name="SOP" placeholder="SOP" required="required" />
+
+        <label for="LOR">Enter your LOR: </label>
+        <input type="text" name="LOR" placeholder="LOR" required="required" />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+        <button type="reset" class="btn btn-primary btn-block btn-large">Reset</button>
+    </form>
+
+        <form action="{{ url_for('home')}}" method="get">
+            <button type="submit" class="btn btn-primary btn-block btn-large">Go back</button>
+
+        </form>
+        <br>
+        <br>
+        {% if check %}
+        {{prediction_text}}
+        {% endif %}
+
+        <script>
+            function validate(){
+                let from = document.forms["form"];
+                a = Number.isInteger(parseInt(from['CGPA'].value));
+                b = Number.isInteger(parseInt(from['LOR'].value));
+                c = Number.isInteger(parseInt(from['SOP'].value));
+                d = Number.isInteger(parseInt(from['University Rating'].value));
+                e = Number.isInteger(parseInt(from['GRE Score'].value));
+                f = Number.isInteger(parseInt(from['TOEFL Score'].value));
+                if(!a || !b || !c || !d || !e || !f){
+                    
+                    alert("Trying to be Smart, eh !");
+                    return false;
+            
+                }
+                    
+
+            }
+        </script>
+    </body>
+</html>
