@@ -6,36 +6,63 @@
         <title>University Admission</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel= "stylesheet" href="{{ url_for('static',filename='main.css') }}">
         
     </head>
     <body>
-       <h1>Know your chances</h1>
-       <form action="{{ url_for('result')}}" onsubmit="return validate()" name="form" method="post" >
+       <h1>Predict your chances of Admission</h1>
+       <div class="login-box">
+       <form action="{{ url_for('result')}}" onsubmit=" return validate()" name="form" method="post" >
+        <div class="user-box">
+    	<input type="text" name="CGPA"  required/>
         <label for="CGPA">Enter your CGPA: </label>
-    	<input type="text" name="CGPA" placeholder="CGPA" required="required" />
-        
+        </div>
+
+        <div class="user-box">
+        <input type="text" name="GRE Score"  required />
         <label for="GRE Score">Enter your GRE Score: </label>
-        <input type="text" name="GRE Score" placeholder="GRE Score" required="required" />
+        </div>
 
+        <div class="user-box">
+
+            <input type="text" name="TOEFL Score"  required />
         <label for="TOEFL Score">Enter your TOEFL Score: </label>
-		<input type="text" name="TOEFL Score" placeholder="TOEFL Score" required="required" />
+		
+        </div>
 
-        <label for="Research">Have you done any Research: </label>
+        <section>Have you done any Research: <section>
+        <div class="user-box">
         <label for="Research">Yes: </label>
         <input type="radio" name="Research" value="1"/>
+        </div>
+        <div class="user-box">
         <label for="Research">No: </label>
         <input type="radio" name="Research" value="0"/>
+        </div>
 
+        <div class="user-box">
+            <input type="text" name="University Rating"  required />
         <label for="University Rating">Enter University Rating: </label>
-        <input type="text" name="University Rating" placeholder="University Rating" required="required" />
+       
+        </div>
 
+        <div class="user-box">
+       
+        <input type="text" name="SOP"  required/>
         <label for="SOP">Enter your SOP: </label>
-        <input type="text" name="SOP" placeholder="SOP" required="required" />
+        </div>
 
+        <div class="user-box">
+        
+        <input type="text" name="LOR"  required/>
         <label for="LOR">Enter your LOR: </label>
-        <input type="text" name="LOR" placeholder="LOR" required="required" />
-
-
+        </div>
+        <label>
+            <section>{% if check %}
+                {{prediction_text}}
+                {% endif %}</section>
+        
+    </label>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
 
         <button type="reset" class="btn btn-primary btn-block btn-large">Reset</button>
@@ -45,11 +72,11 @@
             <button type="submit" class="btn btn-primary btn-block btn-large">Go back</button>
 
         </form>
+        
+       </div>
         <br>
         <br>
-        {% if check %}
-        {{prediction_text}}
-        {% endif %}
+        
 
         <script>
             function validate(){
